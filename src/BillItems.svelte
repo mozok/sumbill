@@ -40,5 +40,8 @@
     .container {
         display: flex;
         flex-direction: column;
+        margin: 5px;
+        padding: 2px;
+        border: 1px solid black;
     }
 </style>
