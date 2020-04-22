@@ -1,10 +1,22 @@
 <script>
-	export let name;
+	import BillTotal from './BillTotal.svelte';
+	import BillItems from './BillItems.svelte';
+	import { bills } from './stores.js';	
+
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<BillTotal />
+
+	<div class="container">
+		{#each $bills as billItems, index}
+			<BillItems {index} {billItems} />
+		{/each}
+	</div>
+
+	<div>
+		<button on:click={bills.addBill}>+</button>
+	</div>
 </main>
 
 <style>
@@ -26,5 +38,9 @@
 		main {
 			max-width: none;
 		}
+	}
+
+	.container {
+		display: flex;
 	}
 </style>
